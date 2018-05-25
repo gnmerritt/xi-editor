@@ -19,12 +19,11 @@ target/release/xi-syntect-plugin: src/*.rs Cargo.toml Cargo.lock
 	cargo build --release
 
 install: out/syntect
-	mkdir -p $(XI_PLUGIN_DIR)
-	cp -r out/syntect $(XI_PLUGIN_DIR)/syntect
+	mkdir -p $(XI_PLUGIN_DIR)/syntect
+	cp -r out/syntect/* $(XI_PLUGIN_DIR)/syntect
 
 clean:
-	rm out/gen_manifest.toml
-	rmdir out
+	rm -rf out
 	cargo clean
 
-.PHONY: install
+.PHONY: clean install
